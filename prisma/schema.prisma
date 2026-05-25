@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Plant {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  scientificName String
+  tagline        String
+  description    String
+  image          String
+  heroImage      String
+  category       String
+  tags           String   // JSON array
+  careLevel      String
+  light          String
+  water          String
+  humidity       String
+  temperature    String
+  petSafe        Boolean  @default(false)
+  airPurifying   Boolean  @default(false)
+  growthRate     String
+  maxHeight      String
+  nativeRegion   String
+  careGuide      String   // JSON object
+  commonProblems String   // JSON array
+  proTips        String   // JSON array
+  faqs           String   // JSON array
+  featured       Boolean  @default(false)
+  published      Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Product {
+  id               String           @id @default(cuid())
+  slug             String           @unique
+  name             String
+  brand            String
+  description      String
+  shortDescription String
+  image            String
+  category         String
+  priceRange       String
+  rating           Float            @default(0)
+  reviewCount      Int              @default(0)
+  tags             String           // JSON array
+  amazonUrl        String
+  amazonAsin       String?
+  affiliateTag     String           @default("indoorgarden-20")
+  featured         Boolean          @default(false)
+  bestSeller       Boolean          @default(false)
+  published        Boolean          @default(true)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  clicks           AffiliateClick[]
+}
+
+model BlogPost {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  title        String
+  excerpt      String
+  content      String
+  image        String
+  category     String
+  tags         String   // JSON array
+  author       String
+  authorAvatar String
+  publishedAt  DateTime @default(now())
+  readTime     Int      @default(5)
+  featured     Boolean  @default(false)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String   @default("homepage")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  referrer  String?
+  userAgent String?
+  createdAt DateTime @default(now())
+}
+
+model AffiliateClick {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model QuizCompletion {
+  id         String   @id @default(cuid())
+  resultSlug String
+  answers    String   // JSON
+  createdAt  DateTime @default(now())
+}

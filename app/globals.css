@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-cream: #FDFAF4;
+  --color-cream-dark: #F5F0E8;
+  --color-cream-border: #E8DCC8;
+
+  --color-forest: #2C5F2E;
+  --color-forest-dark: #1A3D1C;
+  --color-forest-light: #3D7A40;
+
+  --color-sage: #7AA95C;
+  --color-sage-light: #C4D7A8;
+  --color-sage-pale: #EDF4E4;
+
+  --color-terra: #C8734A;
+  --color-terra-light: #E8A882;
+  --color-terra-pale: #F7EDE7;
+
+  --color-earth: #8B6914;
+  --color-earth-light: #C4A456;
+  --color-earth-pale: #F5EDDC;
+
+  --color-text-dark: #1A2310;
+  --color-text-body: #3D4A35;
+  --color-text-muted: #7A8B72;
+  --color-text-light: #A8B8A0;
+
+  /* Fonts */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Spacing scale additions */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+
+  /* Border radius */
+  --radius-botanical: 2rem 0.5rem 2rem 0.5rem;
+}
+
+:root {
+  --background: #FDFAF4;
+  --foreground: #1A2310;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #7AA95C;
+  border-radius: 3px;
+}
+
+/* Botanical card shape */
+.card-botanical {
+  border-radius: 2rem 0.5rem 2rem 0.5rem;
+}
+
+/* Organic text gradient */
+.text-gradient-green {
+  background: linear-gradient(135deg, #2C5F2E 0%, #7AA95C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Leaf mask decoration */
+.leaf-mask {
+  clip-path: ellipse(50% 40% at 50% 50%);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: sway 4s ease-in-out infinite;
+}
+
+/* Botanical pattern overlay */
+.pattern-botanical {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(122, 169, 92, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(44, 95, 46, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(200, 115, 74, 0.04) 0%, transparent 50%);
+}
+
+/* Section divider */
+.divider-wave {
+  height: 60px;
+  background: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #E8DCC8 25%, #F5F0E8 50%, #E8DCC8 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #7AA95C;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Care difficulty badges */
+.badge-easy { background-color: #EDF4E4; color: #2C5F2E; }
+.badge-medium { background-color: #F5EDDC; color: #8B6914; }
+.badge-hard { background-color: #F7EDE7; color: #C8734A; }
+
+/* Image hover zoom */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-zoom:hover img {
+  transform: scale(1.08);
+}
+
+/* Prose overrides */
+.prose-botanical {
+  --tw-prose-body: #3D4A35;
+  --tw-prose-headings: #1A2310;
+  --tw-prose-links: #2C5F2E;
+  --tw-prose-bold: #1A2310;
+  --tw-prose-hr: #E8DCC8;
+}
