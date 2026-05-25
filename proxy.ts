@@ -5,7 +5,7 @@ const SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET ?? "fallback-secret-change-me"
 );
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname.startsWith("/admin") && pathname !== "/admin/login") {

@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 import AnalyticsClient from "@/components/admin/AnalyticsClient";
 import { subDays, format, startOfDay } from "date-fns";

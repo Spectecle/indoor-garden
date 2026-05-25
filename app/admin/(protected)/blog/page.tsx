@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { prisma } from "@/lib/prisma";
 import BlogAdminClient from "@/components/admin/BlogAdminClient";
 import { format } from "date-fns";
